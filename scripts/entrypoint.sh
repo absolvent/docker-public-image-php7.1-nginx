@@ -16,6 +16,9 @@ case "$LAST_PARAM" in
             ;;
 esac
 
+# Update .env file
+. "$DIR/env_secrets_expand.sh"
+
 # Check if there is ENV variable defined and try to run a script matching ENV value from /env
 if [[ ! -z "${APP_ENV}" ]]; then
       log_info "Environment variable defined: APP_ENV=$APP_ENV"
@@ -31,9 +34,6 @@ if [[ ! -z "${APP_ENV}" ]]; then
          echo "Environment script: $ENV_SCRIPT_PATH not found. Continuing..."
       fi
 fi
-
-# Update .env file
-exec "$DIR/env_secrets_expand.sh" &
 
 # Run supervisord to handle nginx and php-fpm processes together
 exec "$DIR/supervisord.sh"
