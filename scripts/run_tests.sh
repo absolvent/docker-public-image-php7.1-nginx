@@ -9,4 +9,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 log_info "running test"
 log_info ${pwd}
 
-./vendor/bin/phpunit
+./vendor/bin/phpunit --configuration phpunit.xml
