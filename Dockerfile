@@ -26,6 +26,7 @@ RUN mkdir -p /scripts
 ADD ./config/supervisord.conf /etc/supervisord.conf
 COPY ./config/nginx /etc/nginx
 COPY ./config/php-fpm.d /opt/bitnami/php/etc/php-fpm.d
+COPY ./config/php.ini /opt/bitnami/php/lib
 COPY --chown=www-data:www-data ./scripts/ /scripts
 COPY --chown=www-data:www-data help/help.md /help.md
 COPY --chown=www-data:www-data ./example-data/public   /app/public
