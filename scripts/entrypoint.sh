@@ -13,6 +13,7 @@ LAST_PARAM="${@: -1}"
 case "$LAST_PARAM" in
         help)
             exec $DIR/show_help.sh
+            exit 0
             ;;
 esac
 
@@ -34,6 +35,13 @@ if [[ ! -z "${APP_ENV}" ]]; then
          echo "Environment script: $ENV_SCRIPT_PATH not found. Continuing..."
       fi
 fi
+
+case "$LAST_PARAM" in
+        test)
+            exec $DIR/run_tests.sh
+            exit 0
+            ;;
+esac
 
 # Run supervisord to handle nginx and php-fpm processes together
 exec "$DIR/supervisord.sh"
