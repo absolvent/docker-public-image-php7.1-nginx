@@ -23,7 +23,7 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 
 RUN mkdir -p /scripts
 
-ADD ./config/supervisord.conf /etc/supervisord.conf
+COPY ./config/supervisord/* /etc/
 COPY ./config/nginx /etc/nginx
 COPY ./config/php-fpm.d /opt/bitnami/php/etc/php-fpm.d
 COPY --chown=www-data:www-data ./scripts/ /scripts
