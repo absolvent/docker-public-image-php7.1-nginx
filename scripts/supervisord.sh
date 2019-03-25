@@ -6,7 +6,7 @@
 
 config="/etc/supervisord.conf"
 
-if [ !-z $CRON ];then
+if [ ! -z $CRON ];then
     config="/etc/supervisord_cron.conf"
 fi
 
